@@ -1,9 +1,35 @@
 {% extends  'mainapp/main.html' %}
 
 {% block content%}
+{% load static %}
 
-
-
+<div class="container bg-dark text-white p-3 my-5">
+    <h2 style="text-align: center;">GalleryName</h2>
+    <div class="row">
+        <div class="col-4">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ipsum magna, cursus et arcu sodales,
+                vestibulum feugiat turpis. Nulla nec ornare felis, vitae vehicula velit. In hac habitasse platea
+                dictumst. Pellentesque faucibus blandit dolor, eget pulvinar justo vestibulum ut. Morbi sed massa diam.
+                Nulla facilisi. Maecenas eu turpis cursus, elementum ante at, eleifend lacus. Proin suscipit dolor
+                massa, at malesuada dolor dapibus a.</p>
+        </div>
+        <div class="col-4 text-center p-5">
+            <a href="/galleryname" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Exit Virtual
+                Tour</a>
+        </div>
+        <div class="col-4">
+            <h6>Contact Information</h6>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ipsum magna, cursus et arcu sodales,
+                vestibulum feugiat turpis.</p>
+        </div>
+    </div>
+    <hr>
+    <div class="row container text-center">
+        <div class="col-12">
+            <img src="{% static 'images/unityscreenexp.png' %}">
+        </div>
+    </div>
+</div>
 
 
 
