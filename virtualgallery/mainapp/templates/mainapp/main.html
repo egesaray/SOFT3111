@@ -14,37 +14,55 @@
     <!-- some of the codes in this file taken from bootsnipp.com and then re-designed by us -->
 
     <style>
-.our-bgimage{
+    .our-bgimage{
     background-image: url( '/static/images/bgimage.jpg' ) ;
     background-size: cover;
 	}
-</style>
+
+    </style>
 
 
 </head>
 <body class="our-bgimage">
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="/">VirtualGallery.com</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="nav navbar-nav navbar-right">
-      <li class="nav-item">
-        <a class="nav-link" href="/uploadpage">Upload Gallery <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/myaccount">My Account</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/galleries">Galleries</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/">Logout</a>
-      </li>
-    </ul>
-  </div>
+    <a class="navbar-brand" href="/">VirtualGallery.com</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="nav navbar-nav navbar-right">
+            <li class="nav-item">
+                <a class="nav-link" href="/uploadpage">Upload Gallery <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/myaccount">My Account</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/galleries">Galleries</a>
+            </li>
+
+            <li class="nav-item">
+                <form id="login" method="post">
+                    <div class="row">
+                        <div class="col-4">
+                            <input type="text" class="form-control" name="username" id="username"
+                                   placeholder="Username"/>
+                        </div>
+                        <div class="col-4">
+                            <input type="password" class="form-control" name="password" id="password"
+                                   placeholder="Password"/>
+                            <a href="/forgotpassword">Forgot Password?</a>
+                        </div>
+                        <div class="col-4">
+                            <a class="nav-link" href="/">Login</a>
+                        </div>
+                    </div>
+                </form>
+            </li>
+        </ul>
+    </div>
 </nav>
 
 
