@@ -4,11 +4,13 @@ from . import views
 
 urlpatterns = [
     path('',views.home),
-    path('register/',views.register),
-    path('forgotpassword/',views.forgotpassword),
-    path('galleries/',views.galleries),
-    path('galleryname/',views.galleryname), #Specific gallery (will be rearranged)
-    path('virtualtour/',views.virtualtour),#GalleryName/VirtualTour (will be rearranged)
-    path('uploadpage/',views.uploadpage), #User_UploadPage
-    path('myaccount/',views.myaccount), #User_My Account
+    path('loginPage/',views.loginPage,name='loginPage'),
+    path('logoutPage/',views.logoutPage,name='logoutPage'),
+    path('registerPage/',views.registerPage,name='registerPage'),
+    path('forgotpassword/',views.forgotpassword ,name='forgotpassword'),
+    path('galleries/',views.galleries ,name='galleries'),
+    path('galleryname/',views.galleryname,name='galleryname'), #Specific gallery (will be rearranged)
+    path('virtualtour/',views.virtualtour ,name='virtualtour'),#GalleryName/VirtualTour (will be rearranged)
+    path('uploadpage/',views.uploadpage ,name='uploadpage'), #User_UploadPage
+    path('myaccount/',views.myaccount ,name='myaccount'), #User_My Account
 ]

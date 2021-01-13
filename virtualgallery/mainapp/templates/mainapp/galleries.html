@@ -72,6 +72,10 @@ Include the above in your HEAD tag
             <a href="/galleryname">
               <img src="{% static 'images/agatha.jpg' %}" alt="Image" style="width: 250px;height: 250px;">
             </a>
+            {% for i in gal %}
+            {{ i.galleryName }}
+            {% endfor %}
+
             <h5>Gallery's Name</h5>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi convallis, felis cursus convallis
               consectetur, nibh justo dictum nulla, eget fermentum est lacus in ipsum.</p>

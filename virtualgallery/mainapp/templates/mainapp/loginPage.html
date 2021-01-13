@@ -1,0 +1,30 @@
+{% extends  'mainapp/main.html' %}
+
+{% block content%}
+{% load static %}
+
+
+<div class="row p-3 my-3 ">
+    <div class="col-4"></div>
+    <div class="col-4 bg-dark text-white p-3 my-3">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div class="row form-group">
+                <input type="text" class="form-control" name="username" id="username"
+                       placeholder="Username"/>
+            </div>
+            <div class="row form-group">
+                <input type="password" class="form-control" name="password" id="password"
+                       placeholder="Password"/>
+                <a href="/forgotpassword">Forgot Password?</a>
+            </div>
+            <div class="row form-group">
+                <input class="btn login_btn" type="submit" value="Login">
+            </div>
+
+        </form>
+
+    </div>
+    <div class="col-4"></div>
+</div>
+{% endblock %}
