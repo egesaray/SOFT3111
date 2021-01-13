@@ -10,39 +10,42 @@
         <div class="col-md-6">
             &nbsp
             <div class="list-group">
-                <a href="/galleryname" class="list-group-item list-group-item-action">My Gallery 1</a>
-                <a href="/galleryname" class="list-group-item list-group-item-action">My Gallery 2</a>
-                <a href="/galleryname" class="list-group-item list-group-item-action">My Gallery 3</a>
-                <a href="/galleryname" class="list-group-item list-group-item-action">My Gallery 4</a>
-                <a href="/galleryname" class="list-group-item list-group-item-action">My Gallery 5</a>
+                {% for i in mygals %}
+                <a href="/galleryname" class="list-group-item list-group-item-action">{{i}}</a>
+                {% endfor %}
             </div>
             &nbsp
         </div>
 
         <div class="col-md-6">
             &nbsp
-            <form>
+            <form method="POST">
+                {% csrf_token %}
                 <div class="form-group">
-                    <label for="newusername">New username</label>
-                    <input type="password" class="form-control" id="newusername">
+                    <label>New username</label>
+                    {{form.username}}
                 </div>
                 <div class="form-group">
-                    <label for="newemail">New email address</label>
-                    <input type="email" class="form-control" id="newemail" aria-describedby="emailHelp">
+                    <label>New email address</label>
+                    {{form.email}}
+                    {{form.email.errors}}
                     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
                         else.</small>
                 </div>
                 <div class="form-group">
-                    <label for="oldpassword">Old Password</label>
-                    <input type="password" class="form-control" id="oldpassword">
+                    <label >Old Password</label>
+                    {{ formi.old_password }}
+                    {{ formi.old_password.errors }}
                 </div>
                 <div class="form-group">
-                    <label for="newpassword">New Password</label>
-                    <input type="password" class="form-control" id="newpassword">
+                    <label>New Password</label>
+                    {{ formi.new_password1 }}
+                    {{ formi.new_password1.errors }}
                 </div>
                 <div class="form-group">
-                    <label for="reenternewpassword">Re enter new password</label>
-                    <input type="password" class="form-control" id="reenternewpassword">
+                    <label>Re enter new password</label>
+                    {{ formi.new_password2 }}
+                    {{ formi.new_password2.errors }}
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
