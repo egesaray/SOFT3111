@@ -4,6 +4,7 @@ from .models import *
 from django.contrib.auth import  authenticate , login ,logout
 from .forms import *
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import PasswordChangeForm
 # Create your views here.
 
 
@@ -20,7 +21,15 @@ def registerPage(request):
             form = CreateUserForm(request.POST)
             if form.is_valid():
                 form.save()
-                return redirect('')
+                username = request.POST['username']
+                password = request.POST['password1']
+                user = authenticate(request, username=username, password=password)
+                first_name = request.POST['first_name']
+                last_name = request.POST['last_name']
+                email = request.POST['email']
+                ouser = ourUser(username=username ,first_name=first_name, last_name=last_name, email=email,user=user)
+                ouser.save()
+                return redirect('/')
 
         context = {'form':form}
         return render(request,'mainapp/registerPage.html' , context)
@@ -38,7 +47,7 @@ def loginPage(request):
             user= authenticate(request, username=username , password=password)
             if user is not None:
                 login(request , user)
-                return redirect('')
+                return redirect('/')
 
         return render(request,'mainapp/loginPage.html')
 
@@ -55,19 +64,44 @@ def galleries(request):
     return render(request,'mainapp/galleries.html')
 
 def galleryname(request):
-
     return render(request,'mainapp/galleryname.html')
 
 def virtualtour(request):
     return render(request,'mainapp/virtualtour.html')
 
-
 @login_required
 def uploadpage(request):
-    return render(request,'mainapp/uploadpage.html')
-
+    ruser = request.user.ouruser
+    form = uploadform(request.POST)
+    if request.method =='POST':
+        form = uploadform(request.POST)
+        if form.is_valid():
+            galName = request.POST['galleryName']
+            galDescp = request.POST['galleryDescription']
+            continfo = request.POST['contactInfo']
+            Gal = Gallery(galleryName=galName,galleryDescription=galDescp,contactInfo=continfo,ouruser=ruser)
+            Gal.save()
+            return redirect('/')
+    context = {'form':form}
+    return render(request,'mainapp/uploadpage.html',context)
 
 @login_required
 def myaccount(request):
-    return render(request,'mainapp/myaccount.html')
+
+    ruser = request.user.ouruser
+
+    mygals = Gallery.objects.filter(ouruser=ruser)
+
+    form = ChangeInfoForm(instance=ruser)
+    formi = PasswordChangeForm(data=request.POST, user=request.user)
+    if request.method == 'POST':
+        form = ChangeInfoForm(request.POST, instance=ruser)
+        formi = PasswordChangeForm(data=request.POST, user=request.user)
+        if form.is_valid() and formi.is_valid() :
+            form.save()
+            formi.save()
+            return redirect('/')
+
+    context = {'form': form , 'formi':formi , 'mygals':mygals}
+    return render(request,'mainapp/myaccount.html', context)
 
