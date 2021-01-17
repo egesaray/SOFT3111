@@ -4,60 +4,34 @@
 {% load static %}
 
 <div class="container bg-dark text-white p-3 my-5">
-  <h2 style="text-align: center;">GalleryName</h2>
+  <h2 style="text-align: center;">{{gal.galleryName}}</h2>
   <div class="row">
     <div class="col-4">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ipsum magna, cursus et arcu sodales,
+      <p>{{ gal.galleryDescription }}<br>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ipsum magna, cursus et arcu sodales,
         vestibulum feugiat turpis. Nulla nec ornare felis, vitae vehicula velit. In hac habitasse platea
         dictumst. Pellentesque faucibus blandit dolor, eget pulvinar justo vestibulum ut. Morbi sed massa diam.
         Nulla facilisi. Maecenas eu turpis cursus, elementum ante at, eleifend lacus. Proin suscipit dolor
         massa, at malesuada dolor dapibus a.</p>
     </div>
     <div class="col-4 text-center p-5">
-      <a href="/virtualtour" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Virtual Tour</a>
+      <a href="{% url 'virtualtour' gal.id %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Virtual Tour</a>
     </div>
     <div class="col-4">
       <h6>Contact Information</h6>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ipsum magna, cursus et arcu sodales,
-        vestibulum feugiat turpis.</p>
+      <p>{{gal.contactInfo}}<br>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ipsum magna.</p>
     </div>
   </div>
   <hr>
   <div class="row container text-center p-3 my-3">
+    {% for i in art %}
     <div class="col-4">
-      {{imgs.name}}
-      <img src="{% static 'images/agatha.jpg' %}" alt="Image" style="width: 100%;">
+      <img src="{{ i.image.url }}" alt="Image" style="width: 100%;">
+      {{ i.name }}
     </div>
-    <div class="col-4">
-      <img src="{% static 'images/europeana.jpg' %}" alt="Image" style="width: 100%;">
-    </div>
-    <div class="col-4">
-      <img src="{% static 'images/tamara.jpg' %}" alt="Image" style="width: 100%;">
-    </div>
+    {% endfor %}
   </div>
-  <div class="row container text-center p-3 my-3">
-    <div class="col-4">
-      <img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;">
-    </div>
-    <div class="col-4">
-      <img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;">
-    </div>
-    <div class="col-4">
-      <img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;">
-    </div>
-  </div>
-  <div class="row container text-center p-3 my-3">
-    <div class="col-4">
-      <img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;">
-    </div>
-    <div class="col-4">
-      <img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;">
-    </div>
-    <div class="col-4">
-      <img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;">
-    </div>
-  </div>
-
 </div>
 
 

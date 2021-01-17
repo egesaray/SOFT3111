@@ -5,49 +5,51 @@
 <!-- some of the codes in this file taken from bootsnipp.com and then re-designed by us -->
 
 &nbsp
-<h2>Latest Galleries</h2>
+<h2>Latest Gallery :  {{ galle.galleryName }}</h2>       <h3>Author :  {{ galle.ouruser.username }}</h3>
+<div style="text-align:center;">
+<a href="{% url 'galleryname' galle.id %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Show Gallery</a>
+<a href="{% url 'virtualtour' galle.id %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Virtual Tour</a>
+</div>
 <hr>
 <div class="container p-3 my-3">
             <div class="row blog">
                 <div class="col-md-12">
                     <div class="row">
+                        {% for i in artworks %}
                         <div class="col-md-3">
-                            <div class="container-fluid">
-                                <a href="/galleryname">
-                                    <img src="{% static 'images/agatha.jpg' %}" alt="Image" style="width: 250px;height: 250px;">
-                                    {{images.name}}
-                                </a>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi convallis, felis cursus convallis consectetur, nibh justo dictum nulla, eget fermentum est lacus in ipsum.</p>
-                                <a href="/virtualtour" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Virtual Tour</a>
+                            <div class="container-fluid" style="text-align:center;">
+                                <img src="{{ i.image.url }}" alt="Image" style="width: 250px;height: 250px;">
+                                <p>{{ i.name }}</p>
                             </div>
                         </div>
-                        <div class="col-md-3">
-                            <div class="container-fluid">
-                                <a href="/galleryname">
-                                    <img src="{% static 'images/europeana.jpg' %}" alt="Image" style="width: 250px;height: 250px;">
-                                </a>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi convallis, felis cursus convallis consectetur, nibh justo dictum nulla, eget fermentum est lacus in ipsum.</p>
-                                <a href="/virtualtour" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Virtual Tour</a>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="container-fluid">
-                                <a href="/galleryname">
-                                    <img src="{% static 'images/jonathan.jpg' %}" alt="Image" style="width: 250px;height: 250px;">
-                                </a>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi convallis, felis cursus convallis consectetur, nibh justo dictum nulla, eget fermentum est lacus in ipsum.</p>
-                                <a href="/virtualtour" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Virtual Tour</a>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="container-fluid">
-                                <a href="/galleryname">
-                                    <img src="{% static 'images/tamara.jpg' %}" alt="Image" style="width: 250px;height: 250px;">
-                                </a>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi convallis, felis cursus convallis consectetur, nibh justo dictum nulla, eget fermentum est lacus in ipsum.</p>
-                                <a href="/virtualtour" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Virtual Tour</a>
-                            </div>
-                        </div>
+                        {% endfor %}
+<!--                        <div class="col-md-3">-->
+<!--                            <div class="container-fluid">-->
+<!--                                <a href="/galleryname">-->
+<!--                                    <img src="{% static 'images/europeana.jpg' %}" alt="Image" style="width: 250px;height: 250px;">-->
+<!--                                </a>-->
+<!--                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi convallis, felis cursus convallis consectetur, nibh justo dictum nulla, eget fermentum est lacus in ipsum.</p>-->
+<!--                                <a href="/virtualtour" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Virtual Tour</a>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-3">-->
+<!--                            <div class="container-fluid">-->
+<!--                                <a href="/galleryname">-->
+<!--                                    <img src="{% static 'images/jonathan.jpg' %}" alt="Image" style="width: 250px;height: 250px;">-->
+<!--                                </a>-->
+<!--                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi convallis, felis cursus convallis consectetur, nibh justo dictum nulla, eget fermentum est lacus in ipsum.</p>-->
+<!--                                <a href="/virtualtour" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Virtual Tour</a>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-3">-->
+<!--                            <div class="container-fluid">-->
+<!--                                <a href="/galleryname">-->
+<!--                                    <img src="{% static 'images/tamara.jpg' %}" alt="Image" style="width: 250px;height: 250px;">-->
+<!--                                </a>-->
+<!--                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi convallis, felis cursus convallis consectetur, nibh justo dictum nulla, eget fermentum est lacus in ipsum.</p>-->
+<!--                                <a href="/virtualtour" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Virtual Tour</a>-->
+<!--                            </div>-->
+<!--                        </div>-->
                     </div>
                 </div>
             </div>

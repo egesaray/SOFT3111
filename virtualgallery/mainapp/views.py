@@ -9,10 +9,12 @@ from django.contrib.auth.forms import PasswordChangeForm
 
 
 def home(request):
-    gals = Gallery.objects.all()
-    images = gals.ArtWork.all()
-    context = {'images':images}
-    return render(request,'mainapp/homepage.html')
+    galle = Gallery.objects.last()
+    artworks = ArtWork.objects.filter(gallery=galle)
+
+    context ={'artworks': artworks , 'galle':galle}
+
+    return render(request,'mainapp/homepage.html' , context)
 
 
 def registerPage(request):
@@ -64,13 +66,23 @@ def forgotpassword(request):
     return render(request,'mainapp/forgotpassword.html')
 
 def galleries(request):
-    return render(request,'mainapp/galleries.html')
+    gal = Gallery.objects.all()
+    context = {'gal':gal }
+    return render(request,'mainapp/galleries.html', context)
 
-def galleryname(request):
-    return render(request,'mainapp/galleryname.html')
+def galleryname(request,pk):
+    gal = Gallery.objects.get(id=pk)
+    art = ArtWork.objects.filter(gallery=gal)
 
-def virtualtour(request):
-    return render(request,'mainapp/virtualtour.html')
+    context={'gal': gal , 'art':art}
+    return render(request,'mainapp/galleryname.html',context)
+
+def virtualtour(request,pkv):
+    gal = Gallery.objects.get(id=pkv)
+    arts = ArtWork.objects.filter(gallery=gal)
+
+    context = {'gal': gal, 'arts': arts}
+    return render(request,'mainapp/virtualtour.html',context)
 
 @login_required
 def uploadpage(request):
