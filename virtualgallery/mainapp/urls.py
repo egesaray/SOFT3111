@@ -13,4 +13,6 @@ urlpatterns = [
     path('virtualtour/',views.virtualtour ,name='virtualtour'),#GalleryName/VirtualTour (will be rearranged)
     path('uploadpage/',views.uploadpage ,name='uploadpage'), #User_UploadPage
     path('myaccount/',views.myaccount ,name='myaccount'), #User_My Account
+    path('index/',views.webgl ,name='webgl'),
+
 ]

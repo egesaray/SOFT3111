@@ -24,18 +24,26 @@
         </div>
     </div>
     <hr>
-    <div class="row container text-center">
-        <div class="col-12">
-            <img src="{% static 'images/unityscreenexp.png' %}">
+
+
+    <div class="row">
+        <div class="webgl-content">
+            <br><br><br><br><br><br><br><br><br>
+            <br><br><br><br><br><br><br><br><br>
+            <br><br><br><br><br><br><br><br><br>
+            <br><br><br><br><br><br><br>
+            <div id="unityContainer" style="width: 960px; height: 540px"></div>
+            <div class="footer">
+                <div class="webgl-logo"></div>
+                <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
+                <div class="title">MyFirstGame</div>
+            </div>
         </div>
     </div>
+    <br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br>
 </div>
-
-
-
-
-
-
 
 
 {% endblock %}

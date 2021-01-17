@@ -9,6 +9,9 @@ from django.contrib.auth.forms import PasswordChangeForm
 
 
 def home(request):
+    gals = Gallery.objects.all()
+    images = gals.ArtWork.all()
+    context = {'images':images}
     return render(request,'mainapp/homepage.html')
 
 
@@ -105,3 +108,5 @@ def myaccount(request):
     context = {'form': form , 'formi':formi , 'mygals':mygals}
     return render(request,'mainapp/myaccount.html', context)
 
+def webgl(request):
+    return render(request,'virtualtour/index.html')
