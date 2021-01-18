@@ -21,3 +21,9 @@ class uploadform(ModelForm):
     class Meta:
         model = Gallery
         fields = ['galleryName','galleryDescription','contactInfo']
+
+
+class ImageUploadForm(ModelForm):
+    class Meta:
+        model = ArtWork
+        fields = ['name','image']

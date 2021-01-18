@@ -7,18 +7,16 @@
 
 &nbsp
 <div class="container bg-dark text-white p-3 my-3">
-    <div class="row">
-        <div class="col-md-6">
-            <form method="post" action="#" id="#">
+
+    <form method="POST">
+        <div class="row">
+            {% csrf_token %}
+            <div class="col-md-6">
                 <div class="form-group files">
-                    <label>Upload Your File</label>
-                    <input type="file" class="form-control" multiple="">
+                    {{ formi.name }} {{formi.image}}
                 </div>
-            </form>
-        </div>
-        <div class="col-md-6">
-            <form method="POST">
-                {% csrf_token %}
+            </div>
+            <div class="col-md-6">
                 <div class="form-group">
                     <label>Gallery Name</label>
                     {{form.galleryName}}
@@ -32,13 +30,12 @@
                     {{form.contactInfo}}
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
+            </div>
         </div>
-    </div>
+    </form>
+
 </div>
 &nbsp
-
-
 
 
 {% endblock %}

@@ -1,3 +1,4 @@
+from django.core.files.storage import FileSystemStorage
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import *
@@ -5,11 +6,12 @@ from django.contrib.auth import  authenticate , login ,logout
 from .forms import *
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import PasswordChangeForm
+from django.forms import formset_factory
 # Create your views here.
 
 
 def home(request):
-    galle = Gallery.objects.last()
+    galle = Gallery.objects.first()
     artworks = ArtWork.objects.filter(gallery=galle)
 
     context ={'artworks': artworks , 'galle':galle}
@@ -85,19 +87,27 @@ def virtualtour(request,pkv):
     return render(request,'mainapp/virtualtour.html',context)
 
 @login_required
-def uploadpage(request):
+def uploadpage(request): # formset ve başka yollar denendi ancak hatalar çözülemedi ve verilen süre bittiği için şimdilik galeriye sadece bir image yüklenebiliyor.
     ruser = request.user.ouruser
     form = uploadform(request.POST)
+    formi = ImageUploadForm(request.POST)
     if request.method =='POST':
         form = uploadform(request.POST)
-        if form.is_valid():
+        formi = ImageUploadForm(request.POST , request.FILES )
+        if form.is_valid() and formi.is_valid() :
             galName = request.POST['galleryName']
             galDescp = request.POST['galleryDescription']
             continfo = request.POST['contactInfo']
             Gal = Gallery(galleryName=galName,galleryDescription=galDescp,contactInfo=continfo,ouruser=ruser)
             Gal.save()
+            artname = request.POST['name']
+            artimage = request.POST['image']
+
+            newartwork = ArtWork(name=artname,image=artimage,gallery=Gal)
+            newartwork.save()
+
             return redirect('/')
-    context = {'form':form}
+    context = {'form':form ,'formi':formi}
     return render(request,'mainapp/uploadpage.html',context)
 
 @login_required
@@ -120,5 +130,10 @@ def myaccount(request):
     context = {'form': form , 'formi':formi , 'mygals':mygals}
     return render(request,'mainapp/myaccount.html', context)
 
-def webgl(request):
-    return render(request,'virtualtour/index.html')
+
+
+#
+# def webgl(request):
+#     return render(request,'virtualtour/index.html')
+
+

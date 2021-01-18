@@ -28,8 +28,14 @@ class ArtWork(models.Model):
     image = models.ImageField(null=True, blank=True)
     gallery = models.ForeignKey(Gallery,null=True,on_delete= models.CASCADE)
 
+    # unitycoordinatesX = models.IntegerField(null=True, blank=True)
+    # unitycoordinatesY = models.IntegerField(null=True, blank=True)
+    # unitycoordinatesZ = models.IntegerField(null=True, blank=True)
+
     def __str__(self):
         return self.name
 
-class VirtualTour(models.Model):
-    gallery = models.OneToOneField(Gallery, null=True, on_delete=models.CASCADE)
+
+#
+# class VirtualTour(models.Model):
+#     gallery = models.OneToOneField(Gallery, null=True, on_delete=models.CASCADE)
