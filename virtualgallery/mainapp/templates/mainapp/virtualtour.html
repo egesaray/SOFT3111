@@ -4,46 +4,31 @@
 {% load static %}
 
 <div class="container bg-dark text-white p-3 my-5">
-    <h2 style="text-align: center;">GalleryName</h2>
+    <h2 style="text-align: center;">{{gal.galleryName}}</h2>
     <div class="row">
         <div class="col-4">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ipsum magna, cursus et arcu sodales,
-                vestibulum feugiat turpis. Nulla nec ornare felis, vitae vehicula velit. In hac habitasse platea
-                dictumst. Pellentesque faucibus blandit dolor, eget pulvinar justo vestibulum ut. Morbi sed massa diam.
-                Nulla facilisi. Maecenas eu turpis cursus, elementum ante at, eleifend lacus. Proin suscipit dolor
-                massa, at malesuada dolor dapibus a.</p>
+            <p>{{ gal.galleryDescription }}</p>
         </div>
         <div class="col-4 text-center p-5">
-            <a href="/galleryname" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Exit Virtual
+            <a href="{% url 'galleryname' gal.id %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Exit Virtual
                 Tour</a>
         </div>
         <div class="col-4">
             <h6>Contact Information</h6>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ipsum magna, cursus et arcu sodales,
-                vestibulum feugiat turpis.</p>
+            <p>{{gal.contactInfo}}</p>
         </div>
     </div>
     <hr>
 
-<!-- class "webgl-content" silersen ekranı sayfanın üstüne yapıştırmaz butonlar tıklanabilir hale gelir -->
+    <h3> Unity ekranında unity tarafından sağlanan hazır bir oyun gösterilmiştir.</h3>
+    <h3> Amacımız en azından unity projesini web sayfasında gösterebilmiş olmaktır. </h3>
+    <h3> Projenin içeriği ile bir alakası yoktur. </h3>
 
-    <div class="row">
-        <div class="webgl-content">
-            <br><br><br><br><br><br><br><br><br>
-            <br><br><br><br><br><br><br><br><br>
-            <br><br><br><br><br><br><br><br><br>
-            <br><br><br><br><br><br><br>
-            <div id="unityContainer" style="width: 960px; height: 540px"></div>
-            <div class="footer">
-                <div class="webgl-logo"></div>
-                <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
-                <div class="title">MyFirstGame</div>
-            </div>
-        </div>
+    <div class="row" style="text-align:center;">
+        <center>
+            <div id="unityContainer" style="width: 1138px; height: 630px"></div>
+        </center>
     </div>
-    <br><br><br><br><br><br><br><br><br>
-    <br><br><br><br><br><br><br><br><br>
-    <br><br><br><br><br><br><br><br><br>
 </div>
 
 

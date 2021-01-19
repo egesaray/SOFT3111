@@ -11,7 +11,7 @@ from django.forms import formset_factory
 
 
 def home(request):
-    galle = Gallery.objects.first()
+    galle = Gallery.objects.last()
     artworks = ArtWork.objects.filter(gallery=galle)
 
     context ={'artworks': artworks , 'galle':galle}
